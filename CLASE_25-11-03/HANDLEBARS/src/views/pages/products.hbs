@@ -1,0 +1,14 @@
+<div class="userBody">
+    <div>
+        <p>Lista de Productos</p>
+        <h2>{{auto.marca}}</h2>
+    </div>
+    <div>
+        <ul>
+            {{#each products}}
+            <li>{{title}} - ${{price}}</li>
+            {{/each}}
+        </ul>
+    </div>
+    {{> footer}}
+</div>
