@@ -38,13 +38,40 @@ JS
 - Lenguaje
 - Interpretado - vs Compilado  y diferenciar transpilado
 
+js moderno -> js básico - neutro - original 
+
+
 js 2025  ->  js 1998 <- js neutro + universal
 
 - Sincrónico en un hilo
 - POO (ma o meno)
 - imperativo
+- prototype -> chain
 - Objeto -> funciones - chain
 - tipado débil - vs estricto
+
+```js
+
+nombre = "Juan"
+nombre = 102
+nombre = ["Juan","Juan","Juan","Juan", 103] // Array === Lista
+
+var edad
+
+```
+
+## Tipos de Datos
+- String (text)
+- Number
+- Bool
+- Null 
+- Undefined 
+- OBJETO OBJETO { ...MASTER... }
+    - DOT NOTATION
+    - Propiedades
+- OBJETO ARRAY []
+  ["Pepe", "Juan", 43] <- es una lista indexada
+  {0:"Pepe", 1:"Juan", 2: 43}
 
 
 COMPILAR
@@ -78,6 +105,12 @@ TRANSPILAR
 español Argentino 2025 -> Español neutro
 EC6 EC7   ->   JS puro  - BABEL
 
+
+ES6 -> 2015 <- Muchas nuevas funciones -POO- Clases
+ES7 
+ES16 - 2025
+
+Descanso 10 minutos 
 
 ### Preguntas
 - 
