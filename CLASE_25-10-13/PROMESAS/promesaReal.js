@@ -16,7 +16,8 @@ async function fetchData() {
     console.log("01 error", error);
   }
 }
-const resulDATA = fetchData();
+
+const resulDATA = await fetchData();
 console.log("0111", resulDATA); // Promise { <pending> }
 
 //* Realizamos una peticion a una API para obtener datos - Ejemplo de una promesa que se resuelve con AXIOS
@@ -61,6 +62,30 @@ const holis = async () => {
       `https://akabab.github.io/starwars-api/api/all.json`
     );
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 };
+
+
+/*
+LO ASYNC
+Buscar datos en una API externa 
+Buscar o trabajar datos en una DB
+
+SON PROMESAS
+
+para obtener los datos de esas PROMESAS usamos o .then((data)=>{data}) .catch
+
+o 
+
+async await pero con 
+ try {
+    const { data } = await axios(
+      // await es una pause
+      `https://akabab.github.io/starwars-api/api/all.json`
+    );
+  } catch (error) {
+    console.log(error);
+  }
+
+*/

@@ -8,6 +8,7 @@
 
 //* VAR PRIVADA - ENCAPSULAMIENTO
 
+// _nombre
 class Gato {
     #nombre
     constructor(nombre){

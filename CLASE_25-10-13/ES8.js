@@ -11,13 +11,24 @@ console.log(animal);
 console.log(Object.entries(animal));
 console.log(Object.keys(animal));
 
-console.log(Object.values(animal).length);
+console.log(Object.values(animal));
+
+const listaPersonas = [{nombre:"Juan", edad:23},{nombre:"Mauro", edad:31},{nombre:"Jimy" }]
 
 // AL TENER ESTRUCTURAS ANIDADAS  [[][][]]   [[[[[]]]]]   {{{{{}}}}}  [{}{}{}] [{[]}{[]}]
 
 // NULLISH
+//  null undefined false  <- 0  ""
 
 var nana = 0;
+
+var data = 101
+
+// const validateData = data && data
+// console.log(validateData);
+
+const validateTernario = data ? data : "no hay data"
+console.log(validateTernario);
 
 let nombre = nana && nana;
 console.log(nombre);
@@ -43,6 +54,15 @@ console.log(result)
 
 // if(nana){resultZ=nana}else{resultZ=[]}
 let resultZ = nana ? nana : []
+console.log(resultZ)
+
+//* FRONT
+
+const flag = null 
+
+const componentRender = flag && "<div>HOLA</div>"
+console.log(componentRender)
+
 //*------------------------------------------------------------------
 //*------------------------------------------------------------------
 //*------------------------------------------------------------------

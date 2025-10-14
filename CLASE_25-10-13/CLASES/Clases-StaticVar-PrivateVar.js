@@ -15,6 +15,8 @@
 // }
 
 class Producto {
+
+  //* DATOS
   static IVA = 0.21; // Variable estática (constante) que representa el IVA
   static contador = 0; // Variable estática que cuenta el número de instancias creadas
 
@@ -24,6 +26,7 @@ class Producto {
     Producto.contador++; // Incrementa el contador cada vez que se crea una nueva instancia
   }
 
+  //* FUNCIONES <- MÉTODOS que van a interactuar con esos datos
   // Método estático que devuelve el IVA
   static getIVA() {
     return Producto.IVA; // Acceso a la variable estática IVA
@@ -43,7 +46,7 @@ class Producto {
 const producto1 = new Producto("Producto 1", 100); // Crea una nueva instancia de Producto
 const producto2 = new Producto("Producto 2", 200); // Crea otra instancia de Producto
 const producto3 = new Producto("Producto 3");
-console.log(producto1);
+console.log(producto1.nombre);
 console.log(producto2);
 console.log(producto3);
 console.log(Producto.contador);
@@ -79,8 +82,8 @@ class Persona {
     this.edad = edad;
     Persona.IVA = iva;
   }
-  getIVA(){
-    return Persona.IVA
+  getIVA() {
+    return Persona.IVA;
   }
   // Método para obtener el DNI
   getDni() {
@@ -118,8 +121,8 @@ user_1.mostrarInfo(); // Llamada al método para mostrar la información nuevame
 // Acceder a las variables NO privadas directamente
 console.log(user_1.nombre); // Acceso a la variable pública nombre
 console.log(user_1.apellido); // Acceso a la variable pública apellido
-console.log("--a->", user_1.getIVA())
-console.log("--b->", Persona.IVA)
+console.log("--a->", user_1.getIVA());
+console.log("--b->", Persona.IVA);
 // Acceder a las variables privadas directamente (esto generará un error)
 // console.log(user_1.#dni);
 
@@ -133,9 +136,9 @@ const user_2 = new Persona(
   25,
   0.17
 );
-console.log("--c->", user_1.getIVA())
-console.log("--d->", Persona.IVA = 32)
-console.log("--e->", user_2.getIVA())
+console.log("--c->", user_1.getIVA());
+console.log("--d->", (Persona.IVA = 32));
+console.log("--e->", user_2.getIVA());
 
 /*
 

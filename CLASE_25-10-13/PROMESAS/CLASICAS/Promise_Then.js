@@ -6,6 +6,7 @@
 // (el .then() es una promesa en sí misma, por lo que se puede encadenar con otros .then() o .catch())
 
 // new Promise((res, rej)=>{})
+
 var miPromesa1 = new Promise(function (resolve, reject) {
   setTimeout(() => {
     if (true) {
@@ -13,8 +14,9 @@ var miPromesa1 = new Promise(function (resolve, reject) {
     } else {
       reject(Error("Algo salió mal"));
     }
-  }, 1000);
+  }, 2000);
 });
+
 console.log(miPromesa1); // Promise { <pending> }
 
 const vvvvv = miPromesa1
@@ -26,7 +28,9 @@ const vvvvv = miPromesa1
     }
     return result;
   })
-  .then((nono) => console.log(nono))
+  .then((aca) => {
+    console.log(aca);
+  })
   .catch((error) => console.error(error));
 
-  console.log(vvvvv) //  Promise { <pending> }
+console.log("vvvvvvv--->", vvvvv); // vvvvvvv---> Promise { <pending> }

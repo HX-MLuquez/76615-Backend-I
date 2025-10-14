@@ -5,13 +5,26 @@ const objA = {
   edad: 3,
   objetoAnidado: { a: 2 },
 };
+const copiar = objA;
+// --> {}
+copiar.altura = 98;
+/*
+objA = {
+  nombre: "www",
+  edad: 3,
+  objetoAnidado: { a: 2 },
+  altura: 98
+};
+
+*/
 
 const objeNew = { ...objA };
 
 //* REST - RESTO
 
-const listita = [3, 4, 5, 8, 9];
+const listita = [3, 4, 5, 8, 97];
 const [var1, var2, var3, var4, var5] = listita;
+console.log(var2);
 
 const [a, b, ...resto] = listita;
 console.log(a);
@@ -35,8 +48,10 @@ const persona = {
   edad: 87,
   id: 21,
 };
-const {nombre} = persona // destructuring
-const miNombre = persona.nombre
+const { nombre, edad } = persona; // destructuring
+const miNombre = persona.nombre;
+
+
 
 const { id, ...restoPersona } = persona;
 console.log(id);

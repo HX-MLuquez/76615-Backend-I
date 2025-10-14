@@ -5,3 +5,23 @@
 // Permite que el programa continúe ejecutándose mientras espera que la tarea asíncrona se complete, evitando el bloqueo del hilo principal de ejecución.
 // Se utiliza para manejar el resultado de una tarea asíncrona una vez que se ha completado.
 
+function sumar(a = 1, b = 0) {
+  return a + b;
+}
+function restar(a = 1, b = 0) {
+  return a - b;
+}
+
+function calculadora(tipo, cb, valA, valB) {
+  return cb(valA, valB);
+}
+
+const res = calculadora("sumar", sumar, 23, 45);
+
+console.log(res);
+
+module.exports = { sumar, calculadora };
+
+/*
+const {sumar} = require("./Call_Back.js")
+*/
