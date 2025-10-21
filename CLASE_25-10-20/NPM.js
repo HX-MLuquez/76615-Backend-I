@@ -25,6 +25,8 @@
 // es decir, cualquier versión mayor o igual a 4.17.1 pero menor que 5.0.0. Esto incluye versiones como 
 // 4.17.2, 4.18.0, etc., pero no 5.0.0 o versiones mayores.
 
+// ~4.17.2   -->   4.17.x,
+
 // Ejemplo práctico
 // Inicialización del proyecto:
 
@@ -70,3 +72,12 @@
 
 
 //* JS -> NODE -> NPM    NVM
+
+/*
+DEPENDENCIAS - MODULOS - PAQUETES
+
+De manera LOCAL en el node_modules
+O en el CORE de NODE (nativo de NODE)
+o en el sistema GLOBAL
+
+*/

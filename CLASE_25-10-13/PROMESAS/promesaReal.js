@@ -17,9 +17,11 @@ async function fetchData() {
   }
 }
 
-const resulDATA = await fetchData();
-console.log("0111", resulDATA); // Promise { <pending> }
-
+async function otraFuncion() {
+  const resulDATA = await fetchData();
+  console.log("0111", resulDATA); // Promise { <pending> }
+}
+otraFuncion()
 //* Realizamos una peticion a una API para obtener datos - Ejemplo de una promesa que se resuelve con AXIOS
 async function myFuncion() {
   return "saludo";
@@ -65,7 +67,6 @@ const holis = async () => {
     console.log(error);
   }
 };
-
 
 /*
 LO ASYNC
