@@ -18,21 +18,25 @@ const code_db = "aws123";
 
 //* Método  PATH  function req res
 app.get("/", (req, res) => {
-  res.status(200).send("Hello World!"); // status 200 por defecto OK
+  // status protocolo HTTP
+  res.send("Hello World!"); // status 200 por defecto OK
 });
 
 app.get("/api/texto", (req, res) => {
-  res.send("Hola soy un texto");
+  res.status(200).send("Hola soy un texto");
 });
 
 //* /api/json/...
-app.get("/api/json/:code", (req, res) => {
+app.get("/api/json/:code/:juju", (req, res) => { //*  params {code:undefined, juju:undefined}
   //* Desde el CLIENTE
   console.log("-body--> ", req.body); //* -> body {}
-  console.log("--params-> ", req.params); //* /api/json/abc12  -> params {code:abc12}
+  console.log("--params-> ", req.params); //* /api/json/abc12  -> params {code:123}
   console.log("-query--> ", req.query); //* /api/json/aws123?user=Pepe -> query {user: "Pepe"}
-  // -> { user: 'Jimy', gato: 'Nico' }
-  const { code } = req.params;
+  // -> { miAbuelita: Marta }
+  const { code, juju } = req.params;
+  console.log("---->", req.query.miabuelita) // ----> Marta
+  // const { miabuelita } = req.query;
+  // req.params.code
   if (code === code_db) {
     res.status(200).json(products);
   } else {
@@ -62,7 +66,7 @@ app.get("/api/html", (req, res) => {
   </head>
   <body>
     <h1>API Bike</h1>
-    <button onclick="location.href='/api/json'">Ir a bicicletas</button>
+    <button onclick="location.href='/api/json/aws123/12?miabuelita=MARTITA'">Ir a bicicletas</button>
   </body>
 </html>`);
 });

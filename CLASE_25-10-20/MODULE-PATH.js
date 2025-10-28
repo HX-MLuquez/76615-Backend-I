@@ -17,6 +17,8 @@ const rutaArchivoDinamic = function (nameFile) {
   return mypath;
 };
 
+module.exports = rutaArchivoDinamic;
+
 /*
 
 path.join("pepe", "juju", "texto.txt") -> "pepe/juju/texto.txt";
