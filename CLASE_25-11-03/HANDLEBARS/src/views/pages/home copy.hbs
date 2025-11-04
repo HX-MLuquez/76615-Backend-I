@@ -1,0 +1,134 @@
+{{!-- home handlebars integrando el header.hbs y el footer.hbs y anexar con bttn que llevan a 
+app.get("/user", (req, res) => {
+app.post("/user", (req, res) => {
+app.get("/products", (req, res) => {
+    app.get("/admin/:code", (req, res) => {
+app.get("/astucia/:message", (req, res) => { --}}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mi primera aplicación con Handlebars">
+    <meta name="keywords" content="HTML, CSS, JavaScript, Handlebars">
+
+    <title>Mi Aplicación</title>
+   
+    <style>
+
+    body {
+  background-color: #1e1e2f;
+  color: #f1f1f1;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  border-radius: 75%;
+  border: 3px solid #ff6f59;
+}
+
+.container {
+  text-align: center;
+  padding: 20px;
+}
+
+a, button {
+  text-decoration: none;
+  background-color: #ff6f59;
+  color: #1e1e2f;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+}
+
+a:hover, button:hover {
+  background-color: #ffa600;
+  color: #1e1e2f;
+}
+
+.content, .footer {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding: 16px;
+}
+
+.footer {
+  border-top: 1px solid #3c3c54;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #2a2a40;
+  color: #cfcfcf;
+}
+
+.header {
+  background-color: #2a2a40;
+  text-align: center;
+  border-bottom: 1px solid #3c3c54;
+  padding: 18px 0;
+  width: 100%;
+  color: #ff6f59;
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: 0.5px;
+}
+
+.userBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  gap: 12px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+</style>
+
+   
+</head>
+<body>
+    <div>
+    <div class="header">
+    <h1>Welcome to Handlebars</h1>
+    <div class="container">
+    <p>Ejemplo de integración de rutas con Handlebars</p>
+    <div class="content" style="">
+        <a href="/user">User not_found</a>
+        <a href="/user?id=1234&nombre=Pepe">User</a>
+        <a href="/products">Products</a>
+        <a href="/create_user">Create User</a>
+        <a href="/astucia/No contaban con mi astucia !!!">Astucia</a>
+    </div>
+    </div>
+    </div>
+    <h1>SOY el INICIO - el HOME</h1>
+    
+    {{#if active}}
+      <p>La edad es: {{edad}}</p>
+    {{/if}}
+  
+    <div class="footer">
+    <p>Copyright &copy; 2025</p>
+    <p>Powered by Handlebars</p>
+    <p>Author Mauricio Ga. Lúquez</p>
+    <p>
+        <a href="https://www.npmjs.com/settings/mauricio776101/packages">npm</a>
+        <a href="https://github.com/HX-MLuquez">GitHub</a>
+    </p>
+    <p>Version 1.0.0</p>
+    </div>
+</div>
+</body>
+</html>
+  

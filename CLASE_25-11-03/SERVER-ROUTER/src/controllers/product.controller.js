@@ -25,5 +25,4 @@ const deleteProductById = async (req, res)=> {
 module.exports = {
   getProductById,
   getAllProducts,
-  deleteProductById
 };

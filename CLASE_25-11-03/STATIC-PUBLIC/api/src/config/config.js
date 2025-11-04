@@ -6,3 +6,6 @@ module.exports = {
     public: path.join(__dirname, "../../public"),
   },
 };
+
+
+// import config.paths -> C:\Users\mauuu\OneDrive\Escritorio\CODERHOUSE\...\STATIC-PUBLIC\api\public

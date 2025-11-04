@@ -5,11 +5,15 @@ const petsRouter = require("./routes/pets");
 const app = express();
 
 // Configurar Express para manejar datos de formularios
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(express.urlencoded({ extended: true })); // -> FORM - DATA
+app.use(express.json()); // -> navegador data por body -> Server {data} <- req.body
 
+console.log("---------->", paths.public);
 // Servir archivos estáticos desde la carpeta "public"
-app.use(express.static(paths.public)); 
+//*   Donde los exponemos -> /public  -  y los trae de:
+//*                                 ----------> C:\Users\...\CLASE_25-11-03\STATIC-PUBLIC\api\public
+app.use("/public", express.static(paths.public)) //* OK 'STATIC CONFIG'
+
 
 // Usar el router de pets
 app.use("/api/pets", petsRouter);
