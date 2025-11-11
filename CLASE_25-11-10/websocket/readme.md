@@ -27,9 +27,19 @@ Diferencias entre WebSockets y HTTP
 # socket 
 
 1. `socket.emit('privateMessage', data)`: Solo envía al cliente que inició la conexión.
+  - `socket.on('privateMessage', (data)=>{})`
 2. `io.emit('globalMessage', data)`: Envío global a TODOS los clientes.
 3. `socket.broadcast.emit('broadcastMessage', data)`: Envío a todos excepto al que lo envió.
 4. `io.to(socketId).emit('privateMessage', data)`: Envío privado a un cliente específico.
+
+
+
+
+
+
+
+
+
 
 
 ---

@@ -31,7 +31,7 @@ app.get("/", (req, res) => {
 });
 
 //*-------------------------------
-
+// app -> {a,b,c,d} -> server {a,b,c,d,w,y,c}
 const http = require("http");
 const server = http.createServer(app);
 
@@ -43,15 +43,33 @@ const server = http.createServer(app);
 //* Lista de mensajes que se guardan en el servidor (simulando una base de datos)
 const messages = [];
 
+//* const messages = [{userConect}{message1}, {message2}, {message3}];
+
 //TODO___ SERVER ____
 //* Configuracion de socket.io.
+
+//! ||======================================================||
+//  ||======================================================||
+//* ||  ||===========   ÁREA DE CÓDIGO   ===============||  ||
+//* ||  ||        💻  Escribe tu código aquí  💻       ||  ||
+//* ||  ||==================================================||
+//! ||======================================================||
 const io = new Server(server);
 
 //* Evento de conexión - Cada que se conecta un client se ejecuta su function CB
+//! ||======================================================||
+//  ||======================================================||
+//* ||  ||===========   ÁREA DE CÓDIGO   ===============||  ||
+//* ||  ||        💻  Escribe tu código aquí  💻       ||  ||
+//* ||  ||==================================================||
+//! ||======================================================||
+
 io.on("connection", (socket) => {
   console.log(`Usuario ID: ${socket.id} Conectado!!!`);
 
+  // Nuestros EVENTOS de ESCUCHA
   socket.on("userConnect", (data) => {
+    console.log("----> ", data); // {user:pepe, id: 12345}
     let message = {
       id: socket.id,
       info: "connection",
@@ -60,10 +78,9 @@ io.on("connection", (socket) => {
     };
     messages.push(message);
     io.emit("serverUserMessage", messages);
-  }); //* escucha client emit 'userConnect'
+  });
 
-  //* Atrapa un mensaje mediante 'userMessage'
-  socket.on("userMessage", (data) => {
+   socket.on("userMessage", (data) => {
     console.log("::::data:::::", data);
     const message = {
       id: socket.id,
@@ -72,18 +89,16 @@ io.on("connection", (socket) => {
       message: data.message,
     };
     messages.push(message);
-    //* Envío a todos los usuarios la lista de mensajes actualizada
     io.emit("serverUserMessage", messages);
   });
 
+  // NUESTRO EVENTO DE EMITIR
+
   socket.on("disconnect", (data) => {
-    console.log("----> ", data); // ---->  transport close
+    console.log("----> ", data); // transport close
     console.log("Cliente desconectado:", socket.id);
   });
 });
-
-// => socket {on, id}
-
 //* Evento de desconexion
 
 module.exports = server;

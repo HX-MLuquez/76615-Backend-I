@@ -1,18 +1,23 @@
-//* CLIENT
+//* CLIENT - CLIENTE
 console.log("IN CLIENT");
 
 const userName = document.querySelector(".userName");
 const chatMessage = document.querySelector(".chatMessage");
 var uuid = "";
 
-// const socket = io("http://localhost:8080");
+//! ||======================================================||
+//  ||======================================================||
+//* ||  ||===========   ÁREA DE CÓDIGO   ===============||  ||
+//* ||  ||        💻  Escribe tu código aquí  💻       ||  ||
+//* ||  ||==================================================||
+//! ||======================================================||
 
-//* CONEXIÓN
-const socket = io(); //* por defecto toma la url donde levanta el server
+//* Conexión con el servidor de Socket.IO
+// const socket = io("http://mi-server-aparte.com")
+const socket = io(); // -> por defecto se conecta al server donde se aloja http://localhost:8080
+// www.api-pepe.com
 
-//* Lista de mensajes a renderizar en el chat
-var messages = [];
-
+//* Función para actualizar los mensajes en el chat
 const updateMessagges = (newMessages) => {
   messages = [...newMessages];
   chatMessage.innerHTML = messages
@@ -31,9 +36,9 @@ const updateMessagges = (newMessages) => {
     })
     .join("");
 };
-/*
-Modelo a extraer de la librería de carteles
-*/
+
+//* EVENTOS DE EMITIR
+
 //* Formulario de entrada de usuario con SweetAlert2
 // Mostrar el formulario de entrada de usuario
 Swal.fire({
@@ -63,12 +68,23 @@ Swal.fire({
   }
 });
 
+//* EVENTOS DE ESCUCHA
+//* Evento de conexión con el servidor
+socket.on("serverUserMessage", (data) => {
+  chatMessage.innerHTML = "";
+  updateMessagges(data);
+});
+
+//* Función para actualizar los mensajes en el chat
+
+//* Formulario de entrada de usuario con SweetAlert2
+// Mostrar el formulario de entrada de usuario
+
+//* Evento de conexión con el servidor
+
 //* Enlace de eventos de los botones de la interfaz - al DOM
 const btnMessage = document.getElementById("btnMessage");
 const inputMessage = document.getElementById("inputMessage");
-
-
-//* EMITE un MENSAJE
 //* Función para enviar un mensaje al servidor
 btnMessage.addEventListener("click", (e) => {
   e.preventDefault();
@@ -76,12 +92,7 @@ btnMessage.addEventListener("click", (e) => {
   socket.emit("userMessage", { message, user: userName.innerHTML });
 });
 
-
-//* RECIBE la LISTA de mensajes actualizada
-socket.on("serverUserMessage", (data) => {
-  chatMessage.innerHTML = "";
-  updateMessagges(data);
-});
+//* Evento de conexión con el servidor
 
 /*
 Los eventos de Socket.IO son asíncronos, lo que significa que no podemos detener el flujo 
