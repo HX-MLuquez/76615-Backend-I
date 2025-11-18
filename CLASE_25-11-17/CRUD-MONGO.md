@@ -4,6 +4,9 @@
 
 ## ➕ CREATE
 
+use escuelita
+db.createCollection("alumnos")
+
 ### 📘 Descripción general:
 
 Las operaciones de **inserción** permiten **agregar documentos nuevos** a una colección.
@@ -25,7 +28,21 @@ db.collection.insertMany([documentos], opciones);
 
 ```javascript
 //* Insertar un documento
-db.estudiantes.insertOne({nombre: "Sara",edad: 24,curso: "Matemáticas",correo: "sara@mail.com",});
+db.estudiantes.insertOne({
+  nombre: "Sara",
+  edad: 24,
+  curso: "Matemáticas",
+  correo: "sara@mail.com",
+});
+
+db.alumnos.insertOne({
+  nombre: "Sara",
+  edad: 24,
+  curso: "Matemáticas",
+  correo: "sara@mail.com",
+});
+
+db.alumnos.find();
 ```
 
 ```javascript
@@ -35,7 +52,19 @@ db.estudiantes.insertMany([
   { nombre: "Ana", edad: 22, curso: "Inglés" },
   { nombre: "Pedro", edad: 21, curso: "Arte" },
 ]);
+
+db.alumnos.insertMany([
+  { nombre: "Juan", edad: 20, curso: "Historia" },
+  { nombre: "Ana", edad: 22, curso: "Inglés" },
+  { nombre: "Pedro", edad: 21, curso: "Arte" },
+]);
+
+db.alumnos.insertMany([
+  { nombre: "Jimy", edad: 27, curso: "Historia" },
+  { nombre: "Anina", edad: 22, curso: "Inglés" },
+]);
 ```
+db.alumnos.find().count()
 
 ```javascript
 //* Insertar documento con _id personalizado

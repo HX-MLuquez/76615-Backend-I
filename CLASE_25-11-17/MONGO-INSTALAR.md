@@ -1,5 +1,13 @@
 # Instalar MONGO DB
 
+LOCAL - en mi PC
+Instalamos MongoDB + la cliente gráfica MongoDB Compass + terminal `mongosh` o `mongo`
+
+--- 
+
+EN LA NUBE - MongoDB Atlas (servicio en la nube de MongoDB)
+Tener una cuenta con una base de datos NoSQL en la nube.
+
 ## Instalación 
 
 1. Descargar el instalador de MongoDB desde la página oficial: [https://www.mongodb.com/try/download/community](https://www.mongodb.com/try/download/community)
@@ -26,6 +34,16 @@
 11. Una vez conectado, se puede explorar las bases de datos, colecciones y documentos de MongoDB.
 
 12. ¡Listo! Ahora tienes MongoDB instalado en tu computadora y puedes empezar a trabajar con bases de datos NoSQL.
+
+
+Si al escribir `mongosh` en la terminal no se reconoce el comando, es posible que debas agregar la ruta de instalación de MongoDB a las variables de entorno del sistema. La ruta por defecto suele ser `C:\Program Files\MongoDB\Server\<versión>\bin`.
+
+Paso a paso con windows:
+1. Ir a "Panel de control" -> "Sistema y seguridad" -> "Sistema" -> "Configuración avanzada del sistema".
+2. Hacer clic en "Variables de entorno".
+3. En "Variables del sistema", buscar la variable "Path" y hacer clic en "Editar".
+4. Hacer clic en "Nuevo" e ingresar la ruta de instalación de MongoDB (por ejemplo, `C:\Program Files\MongoDB\Server\6.0\bin`).
+5. Hacer clic en "Aceptar" en todas las ventanas para guardar los cambios.
 
 
 --- 

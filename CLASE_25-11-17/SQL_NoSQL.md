@@ -53,6 +53,50 @@ db.users.find({ email: "jane@example.com" });
 
 ---
 
+SQL -> manejar datos relacionales bajo consultas y con tablas.
+
+No SQL -> manejar datos no relacionales, con diferentes modelos (documentos, colecciones, clave-valor, grafos, columnares). Los datos son tipo JSON == BSON
+
+```js
+// Ejemplo de documento en MongoDB
+const workshops = [
+    {
+        "_id": ObjectId("a1"),
+        "title": "Intro to NoSQL",
+        "instructor": "Alice",
+        "duration": 3,
+        "active": true
+    },
+    {
+        "_id": ObjectId("b2"),
+        "title": "Advanced MongoDB",
+        "instructor": "Bob",
+        "duration": 5,
+        "active": true
+    }
+];
+
+const users = [
+    {
+        "_id": ObjectId("111"),
+        "name": "Bob",
+        "email": "bob@example.com",
+        // Bob participa en uno o más workshops
+        "workshops": [ObjectId("a1"), ObjectId("b2")] 
+    },
+    {
+        "_id": ObjectId("224"),
+        "name": "Pep",
+        "email": "pep@example.com",
+        "workshops": [ObjectId("b2")] 
+    },
+    {
+        "_id": ObjectId("321"),
+        "name": "Vim",
+        "email": "vim@example.com"
+    }
+];
+```
 
 Aunque las bases de datos NoSQL se etiquetan comúnmente como "no relacionales", esto no significa que no puedan manejar relaciones entre datos. La principal diferencia radica en cómo gestionan y representan esas relaciones en comparación con las bases de datos SQL tradicionales. Aquí hay un análisis más detallado sobre este tema:
 
