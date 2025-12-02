@@ -33,7 +33,7 @@ const config = {
   NODE_ENV: process.env.NODE_ENV || 'development',
   PORT: parseInt(process.env.PORT) || 3000,
   HOST: process.env.HOST || 'localhost',
-  MONGO_URI: process.env.MONGO_URI,
+
   // Base de datos
   database: {
     host: process.env.DB_HOST || 'localhost',

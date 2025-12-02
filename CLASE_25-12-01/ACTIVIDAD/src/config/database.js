@@ -82,5 +82,7 @@ class DatabaseConfig {
     }
   }
 }
+const configDatabase = new DatabaseConfig();
+module.exports = configDatabase;
 
-module.exports = new DatabaseConfig();
+// import configDatabase -> configDatabase.connect()

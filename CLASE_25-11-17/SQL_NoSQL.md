@@ -27,8 +27,29 @@
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100),
-    email VARCHAR(100) UNIQUE
+    email VARCHAR(100) UNIQUE,
+    workshop_id INT,
+    FOREIGN KEY (workshop_id) REFERENCES workshops(id)
 );
+
+```bash
+id |      title       | instructor | duration | active
+1  | Intro to NoSQL   | Alice      |    3      | true   |
+2  | Advanced MongoDB | Bob        |     3      | true   |
+ 
+```
+
+```bash
+id |    name    |       email        | workshop_id
+1  | John Smith |  mau@gmail.com     |     2
+```
+
+delete from workshops where id=2;
+NO puede -> elimine en cascada todas las relaciones 
+
+DB SQL el mundo de datos transaccionales 
+
+
 
 -- Insertar datos
 INSERT INTO users (name, email) VALUES ('Jane Doe', 'jane@example.com');
@@ -44,8 +65,10 @@ SELECT * FROM users WHERE email = 'jane@example.com';
 db.users.insertOne({
     name: "Jane Doe",
     email: "jane@example.com"
+    workshop_id: "ObjectId("a1b2c3d4e5f6g7h8i9j0")"
 });
 
+Las relaciones en el mundo no sql se llaman referencias o poblaciones
 // Consultar documento
 db.users.find({ email: "jane@example.com" });
 ```
@@ -208,3 +231,5 @@ Los leones
 
 
 ```
+
+

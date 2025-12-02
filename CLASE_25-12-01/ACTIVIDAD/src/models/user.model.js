@@ -1,12 +1,7 @@
+const { de } = require("@faker-js/faker");
 const mongoose = require("mongoose");
 
 //* Definimos el Schema
-
-//! |***********************|
-//* |***********************|
-//! |****** CODE AQUI ******|
-//* |***********************|
-//! |***********************|
 
 const userSchema = new mongoose.Schema({
   firstName: {
@@ -30,7 +25,7 @@ const userSchema = new mongoose.Schema({
   course: {
     type: String,
     required: true,
-    default: "Introducción al bootcamp",
+    default: "Fullstack",
   },
   grade: {
     type: Number,
@@ -40,25 +35,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: null, // Campo para almacenar la ruta de la imagen
   },
+  deleted: {
+    type: Boolean,
+    default: false,
+  },
 });
 
-//*                            'users'
-module.exports = mongoose.model("User", userSchema);
-
-/*
-
-const User = require("../models/user.model");
-
-User {
-
-find
-findById
-findOne
-findByIdAndUpdate
-update
-findByIdAndDelete
-delete
-
-}
-
-*/
+module.exports = mongoose.model("User", userSchema); // Exportamos el modelo User -> module.exports => User
