@@ -1,7 +1,12 @@
 const { de } = require("@faker-js/faker");
+
+
+//* IMPORTAMOS MONGOOSE */
 const mongoose = require("mongoose");
 
 //* Definimos el Schema
+
+//*  SCHEMA userSchema  <->  MODEL User  <->  COLLECTION users ([]) 
 
 const userSchema = new mongoose.Schema({
   firstName: {

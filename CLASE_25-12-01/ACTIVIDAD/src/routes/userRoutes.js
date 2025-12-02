@@ -7,6 +7,7 @@ router.get("/:id", userController.getUserById);
 router.post("/", userController.createUser);
 router.put("/:id", userController.updateUserById);
 router.delete("/:id", userController.deleteUserById);
+// softDelete router.delete(
 
 //* Implementar upload de imagenes
 const upload = require("../middelwares/multerConfig.js");

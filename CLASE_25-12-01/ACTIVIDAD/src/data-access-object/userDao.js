@@ -1,13 +1,22 @@
 const User = require("../models/user.model"); // => User {...}
+const Admin = require("../models/admin.model"); // => Admin {...}
 const mongoose = require("mongoose");
 
 class UserManager {
   async createUser(data) {
     try {
       if (!data) throw new Error("Datos de usuario no proporcionados");
-      const newUser = new User(data);
-      await newUser.save();
+      // const newUser = new User(data);
+      // //* Validar ---> if (data.image) {
+      // await newUser.save();
+
+      const newUser = await User.create(data);
       return newUser;
+      //* Otra opción es usar User.create(data);
+      /*
+      const newUser = await User.create(data);
+
+      */
     } catch (error) {
       console.error("Error creando usuario:", error);
       throw new Error("Error al crear usuario");

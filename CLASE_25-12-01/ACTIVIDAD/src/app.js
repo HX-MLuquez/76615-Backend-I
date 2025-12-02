@@ -1,6 +1,9 @@
 const express = require("express");
 const path = require("path");
+
+//* MONGOOSE */ IMPORTAMOS MONGOOSE
 const mongoose = require("mongoose");
+
 const logger = require("morgan");
 
 // require("dotenv").config();
@@ -23,6 +26,7 @@ const app = express();
 //  ██████████████████████████████████████████████████████████████
 
 //* Access a la IP de la machine nuestra
+//*                                               :PASSWORD                                   /DB-NAME
 //* mongodb+srv://mauriciogastoncoderhouse_db_user:<DB_PASSWORD>@cluster01.aolpvws.mongodb.net/school?retryWrites=true&w=majority&appName=Cluster01
 mongoose
   .connect(config.database.uri)
@@ -33,7 +37,7 @@ mongoose
 
 //* MIDDELWARES
 app.use(logger("dev"));
-app.use(express.json()); // <- {}
+app.use(express.json()); // <- {} <- data en formato JSON por BODY
 app.use(express.urlencoded({ extended: true })); // FORM <- {}
 
 // Configurar la carpeta 'public' para servir archivos estáticos
