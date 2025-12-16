@@ -75,6 +75,7 @@ app.get("/", (req, res) => {
 //* Modelo de un PAGINATE usando mongoose-paginate-v2
 //* debemos en el schema inyectar el plugin mongoosePaginate
 //* y esto nos proporciona el método estático paginate
+// /students?page=2&limit=5 -> /students?page=3&limit=5
 app.get("/students", async (req, res) => {
   try {
     const { page = 1, limit = 10 } = req.query; // Página actual y límite de resultados por página
@@ -86,6 +87,7 @@ app.get("/students", async (req, res) => {
       sort: { grade: -1 },
     };
 
+    // PAGINATE es un tipo de búsqueda con filtros especiales
     const result = await Student.paginate({}, options);
     console.log("......::::", result);
 
@@ -118,6 +120,16 @@ app.get("/students_paginate_natural", async (req, res) => {
       .sort(gradeSort)
       .skip(skip)
       .limit(limitInt);
+
+      /*
+      page 1 -> 2 -> 3
+      limit    10
+
+      skip    1 - 1 * 10 = 0       0 al 10
+      skip    2 - 1 * 10 = 10     10 al 20
+      skip    3 - 1 * 10 = 20     20 al 30
+
+      */
     const totalDocs = await Student.countDocuments();
     const totalPages = Math.ceil(totalDocs / limit);
     res.render("students_paginate_natural", {
@@ -138,11 +150,3 @@ app.get("/students_paginate_natural", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port http://localhost:${PORT}`);
 });
-
-
-/*
-products  esquive 0    limite 10    0-10
-products  esquive 10   limite 10    10-20
-products  esquive 20   limite 10    20-30
-products  esquive 30   limite 10    30-40
-*/

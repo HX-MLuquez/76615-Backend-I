@@ -66,15 +66,23 @@ async function main() {
   //   }
 
   //TODO_ OCULTAR ya tras haber sido levantado una vez
-  // // Ejecución del flujo principal
+  // Ejecución del flujo principal
   //   await createStudent();
   //   const courseId = await createCourse();
   //   // Obtener el estudiante por email y agregarle el curso
   //   const student = await Student.findOne({ email: 'johndoe@example.com' });
   //   await addCourseToStudent(student._id, courseId);
-  //   console.log("----created USER-----")
   //! --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
   //* --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+
+  //* PROYECCIÓN DE CAMPOS
+  // Obtener los primeros 100 estudiantes solo su _id y first_name
+  const student_search = await Student.find(
+    {},
+    { _id: 1, first_name: 1 } // Incluir solo estos campos
+    // { dni: 0, password: 0 }  // Excluir campos
+  ).limit(100);
+  console.log("Primer estudiante (solo _id y first_name):", student_search);
 
   // Obtener el estudiante sin y con populate
 
@@ -86,13 +94,17 @@ async function main() {
   //* Obtener al estudiante sin populate
   const studentNotPopulate = await Student.findById(studentId);
   console.log("Estudiante sin populate:", JSON.stringify(studentNotPopulate));
-  // courses":[{"course":"68d1d96489d4d07965c4d94e","_id":"68d1d96589d4d07965c4d952"}],"__v":1
 
   //* Obtener al estudiante con populate
   //! IMPLEMETAR EN EL SCHEMA DE STUDENT LA RELACIÓN CON COURSE
   const studentConPopulate = await Student.findById(studentId).populate(
     "courses.course"
   );
+  //* SIN POPULATE
+  //* estudianteDemo = { ... , courses: [ { course: 12 }, {course: 34} ] }
+  //* CON POPULATE
+  //* estudianteDemo = { ... , courses: [ { course: { _id: 12, title: '...' } }, { course: { _id: 34, title: '...' } } ] }
+  
   //* Con el populate se obtiene el objeto completo del curso
   console.log("Estudiante con populate:", JSON.stringify(studentConPopulate));
 
@@ -176,4 +188,15 @@ main().catch((err) => console.error(err));
 }
 
 ---
+
+
+//* estudianteDemo = { ... , courses: [ { course: 12 }, {course: 34} ] }
+resultCourses = []
+ courses.map( c => {
+    const courseId = c.course; // 12, 34
+    const courseObj = await Course.findById(courseId);
+    /
+ });
 */
+
+

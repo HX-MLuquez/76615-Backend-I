@@ -14,6 +14,10 @@ const routes = require("./routes/index");
 
 const app = express();
 
+const dotenv = require("dotenv");
+dotenv.config();
+
+const { MONGO_URI_EXAMPLE, MONGO_URI_modelo, PEPE } = process.env;
 
 //* CONNECT APP con DB-ATLAS mediante MONGOOSE
 
@@ -29,11 +33,12 @@ const app = express();
 //*                                               :PASSWORD                                   /DB-NAME
 //* mongodb+srv://mauriciogastoncoderhouse_db_user:<DB_PASSWORD>@cluster01.aolpvws.mongodb.net/school?retryWrites=true&w=majority&appName=Cluster01
 mongoose
-  .connect(config.database.uri)
+  .connect(config.database.uri) // .connect(MONGO_URI_EXAMPLE)
   .then(() => {
     console.log("MongoDB connected");
   })
   .catch((err) => console.error(err));
+// .connect("mongodb+srv://mauriciogastoncoderhouse_db_user:1234@cluster01.aolpvws.mongodb.net/local?appName=Cluster01")
 
 //* MIDDELWARES
 app.use(logger("dev"));

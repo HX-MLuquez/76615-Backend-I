@@ -37,7 +37,7 @@ const userSchema = new mongoose.Schema({
 //* INDEXADO del campo first_name
 //! Insertar index al schema userSchema en el campo first_name
 // ---> 
-userSchema.index({first_name: 1})
+// userSchema.index({first_name: 1})
 
 //* -> first_name (index) -> b-tree - Esta manera permite crear un índice compuesto
 //* -> { first_name: 1, last_name: 1 } - Índice compuesto

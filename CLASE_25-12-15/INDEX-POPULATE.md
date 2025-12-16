@@ -41,9 +41,9 @@ userSchema.index({ description: 'text' });
 
 ## Populations en Mongo
 
-### ¿Qué es una Population?
+**POPULATION nos brinda el total de la info de los datos anidados (un doc dentro de otro doc o una lista de docs dentro de otro doc)**
 
-#### POPULATE nos trae la data de las relaciones
+### ¿Qué es una Population?
 
 Una **population** implica obtener un documento referenciado dentro de otro documento, con el fin de obtener ambos en una sola búsqueda. Consiste en almacenar el id de un documento, como propiedad de otro documento. A esto se le conoce como **“referencia”**.
 
@@ -96,6 +96,7 @@ Ahora, si el usuario adopta las dos mascotas, no agregamos todo el documento, si
   ],
   "_id": ObjectId("aaaaaaaa")
 }
+
 ```
 
 ### 4. Hacer una búsqueda con `populate`
@@ -132,3 +133,36 @@ console.log('Student with auto-populated courses:', autoPopulatedStudent);
 ```
 
 Este middleware se ejecuta antes de devolver la data, haciendo que el `populate` ocurra sin esfuerzo adicional en cada búsqueda.
+
+
+                   1                       2                             3    
+data = [{dni:34, username, email}, {dni:23, username, email}, {dni:45, username, email}, 
+          4                                5                            6    
+{dni:67, username, email}, {dni:89, username, email}, {dni:12, username, email}, 
+             7                        8                             9                        10
+{dni:90, username, email}, {dni:11, username, email}, {dni:10, username, email}, {dni:9, username, email}]
+
+
+search by dni = 89
+Ordenado de menor a mayor
+dataIndexById = [{9}{10}{11}{12}{23}{34}{45}{67}{89}{90}]
+
+10 === 3 pasos
+20 === 4 pasos
+40 === 5 pasos
+80 === 6 pasos
+160 === 7 pasos
+320 === 8 pasos
+640 === 9 pasos
+1280 === 10 pasos
+2560 === 11 pasos
+5120 === 12 pasos
+10240 === 13 pasos
+20480 === 14 pasos
+40960 === 15 pasos
+81920 === 16 pasos
+163840 === 17 pasos
+
+
+
+

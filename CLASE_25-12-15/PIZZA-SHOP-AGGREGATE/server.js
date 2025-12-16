@@ -34,7 +34,6 @@ async function main() {
   app.get("/orders", async (req, res) => {
     try {
       const orders = await Order.find();
-      // const orders = await Order.find({}, {"name price"});
       res.json(orders);
     } catch (err) {
       res.status(500).send(err.message);
@@ -43,21 +42,27 @@ async function main() {
 
   //* Aggregate
   // Ruta para obtener ventas totales por sabores de pizzas medianas
+  // ["pera", "papa", "tomate", "papa"].set => ["pera", "papa", "tomate"]
+  /*
+[{nombre:"pera", cantidad:2}, {nombre:"papa", cantidad:3}, {nombre:"tomate", cantidad:5}, {nombre:"papa", cantidad:1}]
+[{nombre:"pera", totalQuantity:2}, {nombre:"papa", totalQuantity:4}, {nombre:"tomate", totalQuantity:5}]
+  */
   app.get("/orders/medium-sales", async (req, res) => {
     try {
       //! ARMAR PIPELINE
-      //* Super Consulta bajo una Lista de Operaciones
+      //* Aggregate -> usamos el método .aggregate para buscar creando una SUPER CONSULTA
+      //* Lista de Operaciones (instrucciones) <- es muy útil para el mundo de las transacciones
       const pipeline = [
         { $match: { size: "medium" } }, // WHERE
         {
-          $group: {
-            _id: "$name",
-            totalQuantity: { $sum: "$quantity" },
+          $group: { 
+            _id: "$name", // set por 'name'
+            totalQuantity: { $sum: "$quantity" }, // rescata la cantidad
           },
         },
-        { $sort: { totalQuantity: -1 } },
+        { $sort: { totalQuantity: -1 } }, // Ordena de mayor a menor 8 - 5 - 2 - 0
         {
-          $project: { // Proyecciones
+          $project: { // PROYECCION
             _id: 0,
             name: "$_id",
             totalQuantity: 1,
@@ -65,7 +70,7 @@ async function main() {
         }
       ];
 
-      // Obtener datos
+      // Obtener datos - AGGREGATE es una búsqueda avanzada con múltiples filtros (le pasamos una lista de operaciones)
       const sales = await Order.aggregate(pipeline);
 
       // Insertar en 'reports'
@@ -73,8 +78,8 @@ async function main() {
       await Order.aggregate([
         ...pipeline,
         {
-          $merge: { // Nos crea nueva colección
-            into: "reports", // Nombre de la colección
+          $merge: { // Nos crea nueva colección de nombre 'reports'
+            into: "reports",
             whenMatched: "merge",
             whenNotMatched: "insert",
           },
@@ -118,15 +123,6 @@ http://localhost:3000/orders/medium-sales
     "size": "medium",
     "price": 15,
     "quantity": 5,
-    "date": "2024-08-24T13:01:08.187Z",
-    "__v": 0
-  },
-  {
-    "_id": "66c9d9943390013fd5187e11",
-    "name": "Pepperoni",
-    "size": "medium",
-    "price": 25,
-    "quantity": 3,
     "date": "2024-08-24T13:01:08.187Z",
     "__v": 0
   },

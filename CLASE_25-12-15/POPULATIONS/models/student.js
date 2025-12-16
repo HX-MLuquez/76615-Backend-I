@@ -13,11 +13,13 @@ const studentSchema = new mongoose.Schema({
   courses: [{
     course: {type: mongoose.Schema.Types.ObjectId, ref: 'Course'}
   }]
+  // courses: [{
+  //   id: {type: mongoose.Schema.Types.ObjectId, ref: 'Course'}
+  // }]
 
 });
 
-// pepe.courses -> [{course:1},{course:4},{course:3}]
-// {course:1} -> findById -> curso {}
+// user.courses[0].course -> el ID de ese curso
 
 //TODO_ CON POPULATE MIDDELWARE - (el orden es importante a la hora de aplicar los middelwares)
 // Middleware "pre" para realizar el populate automáticamente antes de una operación find

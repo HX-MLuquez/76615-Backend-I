@@ -2,6 +2,32 @@ const User = require("../models/user.model"); // => User {...}
 const Admin = require("../models/admin.model"); // => Admin {...}
 const mongoose = require("mongoose");
 
+/*
+
+.model("User", userSchema);
+
+User {
+  firstName,
+  lastName,
+  age,
+  dni,
+  course,
+  image,
+  deleted,
+  find(),
+  findById(),
+  findByIdAndUpdate(),
+  findByIdAndDelete(),
+  create(),
+  deleteMany(),
+  ...etc
+}
+
+User.find() => Promise[Array con todos los usuarios]
+User.findById(id) => Promise[Usuario con el id solicitado]
+
+*/
+
 class UserManager {
   async createUser(data) {
     try {

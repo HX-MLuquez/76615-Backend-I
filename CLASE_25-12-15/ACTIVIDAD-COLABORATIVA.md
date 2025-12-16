@@ -5,6 +5,7 @@ Se hará una revisión de un conjunto de schemas. Analizar e identificar las pro
 
 **Nota**: Puede haber más de un índice por documento.
 
+
 ---
 
 ### Contexto 1: Schema de estudiante de un curso en específico
